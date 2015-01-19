@@ -1,0 +1,28 @@
+!% -SD
+
+Constant Story "sample";
+Constant Headline "^there's not much to do here^";
+Release 1; 
+Include "Parser";
+Include "VerbLib";
+Include "Grammar";
+
+Object thevoid "the void"
+	with description
+		"you are in an endless void.",
+		before [;
+			Jump:
+				box "bink!";
+		],
+	has light;
+
+Object -> void "void"
+	with description
+		"more than you can perceive",
+	     name 'void' 'emptiness' 'space' 'here' 'endless' 'space' 'room',
+	has scenery;
+
+[ Initialise ;
+	location = thevoid;
+	player.description = "some person.";
+];

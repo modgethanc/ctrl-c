@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>parchment sample</title>
+	<script src="http://ctrl-c.club/~endorphant/parchment/lib/jquery.min.js"></script> <!-- don't mess with this -->
+	<script src="http://ctrl-c.club/~endorphant/parchment/lib/parchment.min.js"></script> <!-- don't mess with this -->
+	<link rel="stylesheet" href="http://ctrl-c.club/~endorphant/parchment/lib/parchment.min.css">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<script>
+	parchment_options = {
+	default_story: [ "http://ctrl-c.club/~endorphant/sample.z5" ], // change this URL to your game file
+	lib_path: 'http://ctrl-c.club/~endorphant/parchment/lib/', // don't mess with this
+	lock_story: 1,
+	page_title: 0
+	};
+	</script>
+</head>
+<body>
+	<div id="about">
+		<h1>Parchment</h1>
+		<p>is an interpreter for Interactive Fiction. <a href="http://parchment.googlecode.com">Find out more.</a></p>
+		<noscript><p>Parchment requires Javascript. Please enable it in your browser.</p></noscript>
+	</div>
+	<div id="parchment"></div>
+	<div class="floater"> <!--remove this div if you don't want a sidebar-->
+	<p>sidebar:</p>
+	<p>if you have useful<br />
+	instructions for the<br />
+	player, this is a<br />
+	good place</p>
+	<p><a href="parchment/" target="_blank">parchment guide</a></p>
+	<p><a href="sample.inf" target="_blank">source</a>|<a href="sample.z5" target="_blank">.z5</a></p>	
+	</div>
+</body>
+</html>

@@ -180,4 +180,5 @@ Takeable -> massive "indescribable mass"
 [ Initialise ;
 	location = index;
 	player.description = "You're a visitor to this realm.";
+	print_ret "HIGHLY VOLATILE WORK IN PROGRESS^^";
 ];

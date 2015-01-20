@@ -1,19 +1,72 @@
-Constant Story "@@126endorphant@@64ctrl-c.club^";
-Constant Headline "an interactive homepage; type commands, then press 'enter'^^";
+Constant Story "@@126endorphant@@64ctrl-c.club";
+Constant Headline "^an interactive homepage; type commands, then press 'enter'^^";
 Release 0;
 Include "Parser";
 Include "VerbLib";
 Include "Grammar";
 
+!==========
+
+Global HANDS_FULL;
+Global HEAVY_LOAD;
+
+!==========
+
 Class Room
-	with cant_go
+	with 	cant_go
 		"There isn't anything else that way.",
+		before [;
+			Take, Open, Unlock, Push, Lock, Close, Rub, Attack, Climb, Wave:
+				if (HANDS_FULL) {
+					"Your hands are full with carrying that ", (name) HEAVY_LOAD, "!";
+				}
+		],
+		after [;
+			Take:
+				if (noun.encumberance > 9) {
+					HANDS_FULL = 1;
+					HEAVY_LOAD = noun;
+				}
+
+			Drop, PutOn:
+				if (noun.encumberance > 9) {
+					HANDS_FULL = 0;
+				}
+		],
 	has light;
 
 Class Furniture
+	with	before [;	
+			PutOn: 
+				if (noun.encumberance < 5) {
+					move noun to self;
+					"You put ", (the) noun, " on ", (the) self, ".";
+				} else {
+					"It's too big for that.";
+				}
+		],
 	has supporter enterable;
 
 Class Paper
+	with encumberance 0,
+	has ;
+
+Class Takeable
+	with	encumberance 0,
+	has ;
+
+Class Prop
+	has scenery;
+
+!==========
+
+Prop world "everything"
+	with	description
+		"You can't comprehend the entirity of existence.",
+		name 'world' 'universe' 'infinite' 'expanse' 'area' 'here' 'distance' 'existence',
+		found_in [;
+			rtrue;
+		],
 	has ;
 
 !==========
@@ -82,6 +135,16 @@ Room living "@@126endorphant@@64ctrl-c.club/index.html#livingarea"
 		e_to index,
 	has ;
 
+Takeable -> mug "red ceramic mug"
+	with	description
+		"An oversized ceramic mug with a dark red snakeskin design.",
+		before [;
+			Smell: "Even though it's clean, the faint smell of coffee clings to it.";
+		],
+		encumberance 1,
+		name 'mug' 'ceramic' 'cup' 'red' 'snakeskin',
+	has ;
+
 Room projects "@@126endorphant@@64ctrl-c.club/index.html#projectarea"
 	with	description
 		"You feel productive here.",
@@ -98,6 +161,19 @@ Room experimental "@@126endorphant@@64ctrl-c.club/index.html#experimentalarea"
 	with	description
 		"Anything could happen here, but it's oddly still at the moment.",
 		n_to index,
+	has ;
+
+Takeable -> massive "indescribable mass"
+	with	description
+		"It's impossible to know what this is, but it might be useful.",
+		name 'mass' 'thing' 'mystery',
+		after[;
+			Take:
+				"Somehow, you manage to get your hands around it!";
+			Drop:
+				"You release the mass, and it settles into place before you.";
+		],
+		encumberance 10,
 	has ;
 !=====
 

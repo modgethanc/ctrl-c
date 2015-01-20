@@ -1,0 +1,107 @@
+Constant Story "@@126endorphant@@64ctrl-c.club^";
+Constant Headline "an interactive homepage; type commands, then press 'enter'^^";
+Release 0;
+Include "Parser";
+Include "VerbLib";
+Include "Grammar";
+
+Class Room
+	with cant_go
+		"There isn't anything else that way.",
+	has light;
+
+Class Furniture
+	has supporter enterable;
+
+Class Paper
+	has ;
+
+!==========
+
+Room index "@@126endorphant@@64ctrl-c.club/index.html"
+	with 	description
+		"The center of the universe. The world stretches all around you, an infinite expanse of inky black. Objects before you snap into sharp relief, fading to blurry greenish gestures towards the distance.",
+		w_to living, e_to projects, n_to thoughts, s_to experimental,
+	has ;
+
+Furniture -> desk "desk"
+	with 	description
+		"A simple wooden writing desk.",
+		name 'desk' 'wooden' 'writing' 'table',
+		before [;
+			Take: "It seems attached to the floor, even though you can't see how.";
+		],
+	has ;
+
+Paper -> -> dossier "sheet of paper"
+	with	description [;
+			print "The sheet of paper contains a dossier as follows:^^";
+			font off;
+			print "--------------------------------------^";
+			print "|   What is an endorphant?           |^";
+			print "|                                    |^";
+			print "| Like a heirophant, but for endor-  |^";
+			print "| phins. Alternatively, the internal |^";
+			print "| elephant.                          |^";
+			print "|                                    |^";
+			print "| Contactable through local mail, or |^";
+			print "| on twitter as @@64endorphant.         |^";
+			print "--------------------------------------^";
+			font on;
+		],
+		name 'dossier' 'sheet' 'paper',
+	has ;
+
+Paper -> -> links "list of links"
+	with	description [;
+			print "A list of URLs, painstakingly typed out:^^";
+			font off;
+			!print "<html><a href=~http://ctrl-c.club/@@126endorphant/nethackempire.html~>nethack empire</a></html>";
+			print "-----------------------------------------------------------^";
+			print "|                                                         |^";
+			print "| http://ctrl-c.club/@@126endorphant/nethackempire.html       |^";
+			print "| http://ctrl-c.club/@@126endorphant/parchment/               |^";
+			print "| https://github.com/modgethanc/tildescripts              |^";
+			print "| https://github.com/modgethanc/ctrl-c                    |^";
+			print "|                                                         |^";
+			print "-----------------------------------------------------------^";
+			font on;
+		],
+		name 'list' 'typed' 'links',
+	has ;
+
+Furniture -> stool "stool"
+	with	description
+		"A hard wooden stool.",
+		name 'hard' 'wooden' 'stool' 'chair' 'seat',
+	has ;
+
+Room living "@@126endorphant@@64ctrl-c.club/index.html#livingarea"
+	with 	description
+		"It feels like someone has just vacated this area.",
+		e_to index,
+	has ;
+
+Room projects "@@126endorphant@@64ctrl-c.club/index.html#projectarea"
+	with	description
+		"You feel productive here.",
+		w_to index,
+	has ;
+
+Room thoughts "@@126endorphant@@64ctrl-c.club/index.html#thinkingarea"
+	with	description
+		"A curious sense that you are intruding overcomes you.",
+		s_to index,
+	has ;
+
+Room experimental "@@126endorphant@@64ctrl-c.club/index.html#experimentalarea"
+	with	description
+		"Anything could happen here, but it's oddly still at the moment.",
+		n_to index,
+	has ;
+!=====
+
+[ Initialise ;
+	location = index;
+	player.description = "You're a visitor to this realm.";
+];

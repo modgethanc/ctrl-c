@@ -1,23 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE html>
 <html>
 <head>
-<title>~endorphant</title>
- <link href="/screen.css" type="text/css" rel="stylesheet" />
+	<meta charset="utf-8">
+	<title>~endorphant</title>
+	<script src="http://ctrl-c.club/~endorphant/parchment/lib/jquery.min.js"></script> <!-- don't mess with this -->
+	<script src="http://ctrl-c.club/~endorphant/parchment/lib/parchment.min.js"></script> <!-- don't mess with this -->
+	<link rel="stylesheet" href="parchment-index.css">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<script>
+	parchment_options = {
+	default_story: [ "http://ctrl-c.club/~endorphant/index.z5" ], // change this URL to your game file
+	lib_path: 'http://ctrl-c.club/~endorphant/parchment/lib/', // don't mess with this
+	lock_story: 1,
+	page_title: 0
+	};
+	</script>
 </head>
 <body>
-<h1>~endorphant@<a href="../">ctrl-c.club</a></h1>
-
-<h3>i'm here!</h3>
-
-<h2>what is an endorphant?</h2>
-
-<p>like a heirophant, but for endorphins. i show you ways to find good things inside yourself.</p>
-<p><i>alternatively, the internal elephant.</i></p>
-<p><a href="loop">click here to spin</a></p>
-<h3>projects</h3>
-<p><a href="nethackempire.html">nethack empire</a> is a work-in-progress nethack metagame that sources server-wide nethack logs to generate demographic information about nethack characters.</p>
-<p><a href="parchment/">parchment guide</a> for making your own in-browser interactive fiction.</p>
-<p><a href="https://github.com/modgethanc/tildescripts">github repo</a> for my tildebox scripts directory.</p>
-<p>oh my god i want to make <a href="http://tim.jagenberg.info/2014/11/21/punchcard2keyboard/">this</a></p>
+	<div id="about">
+		<h1>Parchment</h1>
+		<p>is an interpreter for Interactive Fiction. <a href="http://parchment.googlecode.com">Find out more.</a></p>
+		<noscript><p>Parchment requires Javascript. Please enable it in your browser.</p></noscript>
+	</div>
+	<div id="parchment"></div>
+	<div class="floater">
+	<p><a href="../" target="_blank">$>^c</a></p>
+	<p><a href="clickyindex.html" target="_blank">hyperlinked index</a></p>	
+	<br /> <br />
+	<b>commands</b><br />
+	standard IF controls<br />include but not limited to:<br /><br />
+	<i>movement</i><br />
+	n, s, e, w, ne, se, ne, nw,<br/>up, down, climb<br /><br />
+	<i>exploring</i><br />
+	e[x]amine, [l]ook, search<br />look in/under (thing),<br /> smell, listen, taste, touch<br /><br />
+	<i>objects</i><br />
+	take, drop, switch on/off,<br />put (noun) on/in (thing),<br />get on/off (thing), <br />read, [i]nventory<br /><br />
+	<i>doors/containers</i><br />
+	open, close, lock, unlock<br /><br /><br />
+	&gt; verbs can be applied<br />to most nouns<br /><br /><br />
+	<p><a href="index.inf" target="_blank">source</a></p>
+	</div>
 </body>
 </html>
